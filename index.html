@@ -86,8 +86,8 @@
                 theme: {
                     extend: {
                         colors: {
-                            black: '#111111',
-                            white: '#FFFFFF',
+                            blackColor: '#111111',
+                            whiteColor: '#FFFFFF',
                             buttonBg: '#EB5757',
                             textColor: '#585858',
                             arrowBg: '#FEF7F7',
@@ -102,7 +102,7 @@
 
     </head>
 
-    <body>
+    <body class="bg-whiteColor">
 
         <!-- 
                                                     Header.
@@ -115,7 +115,206 @@
                                                     Main.
             ===================================================================================
          -->
-        <main></main>
+        <main class="p-2 lg:p-[3.125em]">
+
+            <section>
+
+                <h1 class="text-center text-[2.8125em] text-blackColor work-sans-semi-bold mb-8">
+                    <a href="#">AI Universe Hub</a>
+                </h1>
+
+
+                <!-- Sort By Date Button. -->
+                <div class="text-center ">
+                    <button class="btn flex-nowrap h-auto px-7 py-[1em] bg-buttonBg rounded-2xl text-whiteColor work-sans-semi-bold text-xl">Sort By Date</button>
+                </div>
+
+
+
+
+                <div class="my-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+                    <!-- One. -->
+                    <div class="card bg-base-100 p-[1.5625em] border border-blackColor/10">
+                        <figure class="rounded-2xl">
+                            <img src="images/chatgpt_assistant.jpg" alt="Chatgpt Assistant Image." title="Chat GPT Assistant Photo." />
+                        </figure>
+                        <div class="card-body p-0">
+                            <h2 class="card-title work-sans-semi-bold mt-[1.5625em] mb-4 text-blackColor">Features</h2>
+                            <ol class="text-base text-textColor work-sans-regular list-decimal pl-[1.5625em]">
+                                <li>Natural language processing</li>
+                                <li>Contextual understanding</li>
+                                <li>Text generation</li>
+                            </ol>
+                            <hr class="border border-blackColor/20 my-6">
+                            <div class="card-actions justify-between items-center">
+                                <div>
+                                    <h3 class="work-sans-semi-bold text-[1.5625em] text-blackColor mb-4">ChatGPT</h3>
+                                    <div class="text-base text-textColor work-sans-medium">
+                                        <span class="pr-[0.6875em]"><i class="far fa-calendar-alt"></i></span>
+                                        <span>11/01/2022</span>
+                                    </div>
+                                </div>
+                                <button class="btn flex-nowrap h-[3.125em] w-[3.125em] text-arrowColor bg-arrowBg rounded-full">
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Two. -->
+                    <div class="card bg-base-100 p-[1.5625em] border border-blackColor/10">
+                        <figure class="rounded-2xl">
+                            <img src="images/chatgpt_assistant.jpg" alt="Chatgpt Assistant Image." title="Chat GPT Assistant Photo." />
+                        </figure>
+                        <div class="card-body p-0">
+                            <h2 class="card-title work-sans-semi-bold mt-[1.5625em] mb-4 text-blackColor">Features</h2>
+                            <ol class="text-base text-textColor work-sans-regular list-decimal pl-[1.5625em]">
+                                <li>Natural language processing</li>
+                                <li>Contextual understanding</li>
+                                <li>Text generation</li>
+                            </ol>
+                            <hr class="border border-blackColor/20 my-6">
+                            <div class="card-actions justify-between items-center">
+                                <div>
+                                    <h3 class="work-sans-semi-bold text-[1.5625em] text-blackColor mb-4">ChatGPT</h3>
+                                    <div class="text-base text-textColor work-sans-medium">
+                                        <span class="pr-[0.6875em]"><i class="far fa-calendar-alt"></i></span>
+                                        <span>11/01/2022</span>
+                                    </div>
+                                </div>
+                                <button class="btn flex-nowrap h-[3.125em] w-[3.125em] text-arrowColor bg-arrowBg rounded-full">
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Three. -->
+                    <div class="card bg-base-100 p-[1.5625em] border border-blackColor/10">
+                        <figure class="rounded-2xl">
+                            <img src="images/chatgpt_assistant.jpg" alt="Chatgpt Assistant Image." title="Chat GPT Assistant Photo." />
+                        </figure>
+                        <div class="card-body p-0">
+                            <h2 class="card-title work-sans-semi-bold mt-[1.5625em] mb-4 text-blackColor">Features</h2>
+                            <ol class="text-base text-textColor work-sans-regular list-decimal pl-[1.5625em]">
+                                <li>Natural language processing</li>
+                                <li>Contextual understanding</li>
+                                <li>Text generation</li>
+                            </ol>
+                            <hr class="border border-blackColor/20 my-6">
+                            <div class="card-actions justify-between items-center">
+                                <div>
+                                    <h3 class="work-sans-semi-bold text-[1.5625em] text-blackColor mb-4">ChatGPT</h3>
+                                    <div class="text-base text-textColor work-sans-medium">
+                                        <span class="pr-[0.6875em]"><i class="far fa-calendar-alt"></i></span>
+                                        <span>11/01/2022</span>
+                                    </div>
+                                </div>
+                                <button class="btn flex-nowrap h-[3.125em] w-[3.125em] text-arrowColor bg-arrowBg rounded-full">
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Four. -->
+                    <div class="card bg-base-100 p-[1.5625em] border border-blackColor/10">
+                        <figure class="rounded-2xl">
+                            <img src="images/chatgpt_assistant.jpg" alt="Chatgpt Assistant Image." title="Chat GPT Assistant Photo." />
+                        </figure>
+                        <div class="card-body p-0">
+                            <h2 class="card-title work-sans-semi-bold mt-[1.5625em] mb-4 text-blackColor">Features</h2>
+                            <ol class="text-base text-textColor work-sans-regular list-decimal pl-[1.5625em]">
+                                <li>Natural language processing</li>
+                                <li>Contextual understanding</li>
+                                <li>Text generation</li>
+                            </ol>
+                            <hr class="border border-blackColor/20 my-6">
+                            <div class="card-actions justify-between items-center">
+                                <div>
+                                    <h3 class="work-sans-semi-bold text-[1.5625em] text-blackColor mb-4">ChatGPT</h3>
+                                    <div class="text-base text-textColor work-sans-medium">
+                                        <span class="pr-[0.6875em]"><i class="far fa-calendar-alt"></i></span>
+                                        <span>11/01/2022</span>
+                                    </div>
+                                </div>
+                                <button class="btn flex-nowrap h-[3.125em] w-[3.125em] text-arrowColor bg-arrowBg rounded-full">
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Five. -->
+                    <div class="card bg-base-100 p-[1.5625em] border border-blackColor/10">
+                        <figure class="rounded-2xl">
+                            <img src="images/chatgpt_assistant.jpg" alt="Chatgpt Assistant Image." title="Chat GPT Assistant Photo." />
+                        </figure>
+                        <div class="card-body p-0">
+                            <h2 class="card-title work-sans-semi-bold mt-[1.5625em] mb-4 text-blackColor">Features</h2>
+                            <ol class="text-base text-textColor work-sans-regular list-decimal pl-[1.5625em]">
+                                <li>Natural language processing</li>
+                                <li>Contextual understanding</li>
+                                <li>Text generation</li>
+                            </ol>
+                            <hr class="border border-blackColor/20 my-6">
+                            <div class="card-actions justify-between items-center">
+                                <div>
+                                    <h3 class="work-sans-semi-bold text-[1.5625em] text-blackColor mb-4">ChatGPT</h3>
+                                    <div class="text-base text-textColor work-sans-medium">
+                                        <span class="pr-[0.6875em]"><i class="far fa-calendar-alt"></i></span>
+                                        <span>11/01/2022</span>
+                                    </div>
+                                </div>
+                                <button class="btn flex-nowrap h-[3.125em] w-[3.125em] text-arrowColor bg-arrowBg rounded-full">
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Six. -->
+                    <div class="card bg-base-100 p-[1.5625em] border border-blackColor/10">
+                        <figure class="rounded-2xl">
+                            <img src="images/chatgpt_assistant.jpg" alt="Chatgpt Assistant Image." title="Chat GPT Assistant Photo." />
+                        </figure>
+                        <div class="card-body p-0">
+                            <h2 class="card-title work-sans-semi-bold mt-[1.5625em] mb-4 text-blackColor">Features</h2>
+                            <ol class="text-base text-textColor work-sans-regular list-decimal pl-[1.5625em]">
+                                <li>Natural language processing</li>
+                                <li>Contextual understanding</li>
+                                <li>Text generation</li>
+                            </ol>
+                            <hr class="border border-blackColor/20 my-6">
+                            <div class="card-actions justify-between items-center">
+                                <div>
+                                    <h3 class="work-sans-semi-bold text-[1.5625em] text-blackColor mb-4">ChatGPT</h3>
+                                    <div class="text-base text-textColor work-sans-medium">
+                                        <span class="pr-[0.6875em]"><i class="far fa-calendar-alt"></i></span>
+                                        <span>11/01/2022</span>
+                                    </div>
+                                </div>
+                                <button class="btn flex-nowrap h-[3.125em] w-[3.125em] text-arrowColor bg-arrowBg rounded-full">
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <!-- See More Button. -->
+                <div class="text-center ">
+                    <button
+                        class="btn flex-nowrap h-auto px-7 py-[1em] bg-buttonBg rounded-2xl text-whiteColor work-sans-semi-bold text-xl">See More</button>
+                </div>
+
+            </section>
+
+        </main>
 
 
         <!-- 
@@ -123,6 +322,10 @@
             ===================================================================================
          -->
         <footer></footer>
+
+
+        <!-- Fontawesome kit. -->
+        <script src="https://kit.fontawesome.com/1bbb5634e6.js" crossorigin="anonymous"></script>
 
     </body>
 
