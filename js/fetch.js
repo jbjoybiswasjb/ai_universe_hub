@@ -10,8 +10,16 @@ const loadAiData = async() => {
 // Iterate all allApiData.
 const apiData = (allApiData) => {
     allApiData.forEach(apiData => {
-        console.log(apiData);
+        
+        showData(apiData);
     });
+}
+
+// Show all data on UI.
+const showData = (apiData) => {
+    
+    console.log(apiData)
+
 }
 
 loadAiData();
