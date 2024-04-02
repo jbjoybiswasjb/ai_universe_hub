@@ -6,3 +6,5 @@ const loadAiData = async() => {
     
     console.log(allApiData);
 };
+
+loadAiData();
