@@ -4,7 +4,14 @@ const loadAiData = async() => {
     const data = await res.json();
     const allApiData = data.data.tools;
     
-    console.log(allApiData);
+    apiData(allApiData);
 };
+
+// Iterate all allApiData.
+const apiData = (allApiData) => {
+    allApiData.forEach(apiData => {
+        console.log(apiData);
+    });
+}
 
 loadAiData();
