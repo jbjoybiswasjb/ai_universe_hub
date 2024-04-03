@@ -1,23 +1,40 @@
 // At first get data from api.
-const loadAiData = async() => {
+const loadAiData = async (isSeeMoreButton) => {
     const res = await fetch('https://openapi.programming-hero.com/api/ai/tools');
     const data = await res.json();
-    const allApiData = data.data.tools;
-    
+    let allApiData = data.data.tools;
+
+    const seeMoreButton = document.getElementById('see_more_button');
+    // Hide see more button.
+    if (allApiData.length > 6 && !isSeeMoreButton) {
+        seeMoreButton.classList.remove('hidden');
+    }
+    else {
+        seeMoreButton.classList.add('hidden');
+    }
+
+    // Limit 6 ai data on UI.
+    if (!isSeeMoreButton) {
+        allApiData = allApiData.slice(0, 6);
+    }
+    else {
+        allApiData = allApiData.slice(6);
+    }
+
     apiData(allApiData);
 };
 
 // Iterate all allApiData.
 const apiData = (allApiData) => {
     allApiData.forEach(apiData => {
-        
+
         showData(apiData);
     });
 }
 
 // Show all data on UI.
 const showData = (apiData) => {
-    
+
     const apiSection = document.getElementById('api_section');
     const apiDiv = document.createElement('div');
     apiDiv.classList.add('card', 'bg-base-100', 'p-[1.5625em]', 'border', 'border-blackColor/10');
@@ -54,5 +71,13 @@ const showData = (apiData) => {
 
 
 }
+
+
+
+// For show all button.
+const seeMoreButton = () => {
+    loadAiData(true);
+}
+
 
 loadAiData();
