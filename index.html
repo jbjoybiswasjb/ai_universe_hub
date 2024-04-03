@@ -106,73 +106,6 @@
     <body class="bg-whiteColor lg:container mx-auto">
 
 
-        <!-- Modal. -->
-        <!-- Open the modal using ID.showModal() method -->
-        <button class="btn hidden" onclick="my_modal_5.showModal()">open modal</button>
-        <dialog id="my_modal_5" class="bg-transparent w-11/12 z-10 p-4 lg:p-7 rounded-2xl lg:container">
-            <div class="bg-whiteColor rounded-2xl w-full relative p-2 lg:p-[3em]">             
-                
-                <!-- Modal body. -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-5 p-1">
-
-                    <div class="border border-buttonBg p-4 lg:p-[1.875em] rounded-2xl bg-arrowColor/10">
-                        <h2 class="text-[1.5625em] work-sans-semi-bold">ChatGPT is an AI-powered chatbot platform that uses OpenAI's GPT technology to simulate human conversation.</h2>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 inter-extra-bold text-base my-[1.5625em]">
-                            <div class="p-6 rounded-2xl bg-whiteColor flex justify-center items-center text-center text-modalGreenText">$10/month Basic</div>
-                            <div class="p-6 rounded-2xl bg-whiteColor flex justify-center items-center text-center text-modalOrangeText">$50/month Pro</div>
-                            <div class="p-6 rounded-2xl bg-whiteColor flex justify-center items-center text-center text-arrowColor">Contact us Enterprise</div>
-                        </div>
-                        <div class="flex flex-col md:flex-row text-textColor mb-10 gap-8">
-                            <div>
-                                <h2 class="work-sans-semi-bold text-blackColor text-[1.5625em] mb-4">Features</h2>
-                                <ul class="text-base work-sans-regular space-y-1 list-disc pl-7">
-                                    <li>Customizable responses</li>
-                                    <li>Multilingual support</li>
-                                    <li>Seamless integration</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h2 class="work-sans-semi-bold text-blackColor text-[1.5625em] mb-4">Integrations</h2>
-                                <ul class="text-base work-sans-regular space-y-1 list-disc pl-7">
-                                    <li>FB Messenger</li>
-                                    <li>Slack</li>
-                                    <li>Telegram</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="p-[1.5625em] border border-modalRDivColor rounded-2xl relative">
-                        <div class="">
-                            <figure class="text-center flex justify-center">
-                                <img src="images/modal_chatgpt_picture.png" alt="Chatgpt picture." title="Chatgpt image." class="rounded-xl" />
-                            </figure>
-                        </div>
-                        <div class="card-body items-center text-center pb-0 mx-auto">
-                            <h2 class="card-title mb-4 work-sans-semi-bold text-[1.5625em] text-blackColor">Hi, how are you doing today?</h2>
-                            <p class="text-textColor text-base inter-regular">I'm doing well, thank you for asking. How can I assist you today?</p>
-                        </div>
-
-                        <span class="px-[0.9375em] pt-[0.3125em] pb-2 bg-buttonBg text-whiteColor text-base work-sans-semi-bold rounded-lg absolute top-[2.3125em] right-[2em]">94% accuracy</span>
-                    </div>
-
-                </div>
-
-                <!-- Modal Button div. -->
-                <div class="bg-buttonBg  inline-block z-20 absolute right-0 top-0 translate-x-2/4 -translate-y-2/4 rounded-full">
-                    <form method="dialog">
-                        <!-- if there is a button in form, it will close the modal -->
-                        <button class="btn border-buttonBg bg-transparent flex-nowrap h-[.5em] md:h-[2em] lg:h-[3.25em] w-[.5em] md:w-[2em] lg:w-[3.25em] rounded-full">
-                            <span class="text-base lg:text-xl text-whiteColor">
-                                <i class="fa-solid fa-xmark"></i>
-                            </span>
-                        </button>
-                    </form>
-                </div>
-
-            </div>
-        </dialog>
-
 
         <!-- 
                                                     Header.
@@ -196,7 +129,9 @@
 
                 <!-- Sort By Date Button. -->
                 <div class="text-center ">
-                    <button class="btn flex-nowrap h-auto px-7 py-[1em] bg-buttonBg rounded-2xl text-whiteColor work-sans-semi-bold text-xl" onclick="clickedShortByDate()">Sort By Date</button>
+                    <button
+                        class="btn flex-nowrap h-auto px-7 py-[1em] bg-buttonBg rounded-2xl text-whiteColor work-sans-semi-bold text-xl">Sort
+                        By Date</button>
                 </div>
 
 
@@ -239,15 +174,26 @@
                 <!-- See More Button. -->
                 <div class="text-center">
                     <button
-                        class="btn flex-nowrap h-auto px-7 py-[1em] bg-buttonBg rounded-2xl text-whiteColor work-sans-semi-bold text-xl" onclick="seeMoreButton()" id="see_more_button">See More</button>
+                        class="btn flex-nowrap h-auto px-7 py-[1em] bg-buttonBg rounded-2xl text-whiteColor work-sans-semi-bold text-xl"
+                        onclick="seeMoreButton()" id="see_more_button">See More</button>
                 </div>
             </section>
+
+            <!-- Modal. -->
+            <!-- Open the modal using ID.showModal() method -->
+            <dialog id="ai_modal_details" class="bg-transparent w-11/12 z-10 p-4 lg:p-7 rounded-2xl lg:container">
+                <div class="bg-whiteColor rounded-2xl w-full relative p-2 lg:p-[3em]" id="ai_modal_container">
+
+ 
+
+                </div>
+            </dialog>
 
         </main>
 
 
         <!-- 
-                                                    Footer.
+            Footer.
             ===================================================================================
          -->
         <footer></footer>

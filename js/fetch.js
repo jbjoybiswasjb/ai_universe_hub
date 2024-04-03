@@ -34,7 +34,6 @@ const apiData = (allApiData) => {
 
 // Show all data on UI.
 const showData = (apiData) => {
-
     const apiSection = document.getElementById('api_section');
     const apiDiv = document.createElement('div');
     apiDiv.classList.add('card', 'bg-base-100', 'p-[1.5625em]', 'border', 'border-blackColor/10');
@@ -59,7 +58,7 @@ const showData = (apiData) => {
                         <span>${apiData?.published_in}</span>
                     </div>
                 </div>
-                <button class="btn flex-nowrap h-[3.125em] w-[3.125em] text-arrowColor bg-arrowBg rounded-full">
+                <button class="btn flex-nowrap h-[3.125em] w-[3.125em] text-arrowColor bg-arrowBg rounded-full" onclick="openAiModal('${apiData.id}')">
                     <i class="fas fa-arrow-right"></i>
                 </button>
             </div>
@@ -77,6 +76,94 @@ const showData = (apiData) => {
 // For show all button.
 const seeMoreButton = () => {
     loadAiData(true);
+}
+
+
+// Get modal data for open ai modal.
+const openAiModal = async (id) => {
+    const res = await fetch(`https://openapi.programming-hero.com/api/ai/tool/${id}`);
+    const modalData = await res.json();
+    const aiDetails = modalData.data;
+
+    // Show open ai modal.
+    const aiModalContainer = document.getElementById('ai_modal_container');
+    aiModalContainer.innerHTML = `
+    <!-- Modal body. -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-5 p-1">
+
+        <div class="border border-buttonBg p-4 lg:p-[1.875em] rounded-2xl bg-arrowColor/10">
+            <h2 class="text-[1.5625em] work-sans-semi-bold">ChatGPT is an AI-powered chatbot platform
+                that uses OpenAI's GPT technology to simulate human conversation.</h2>
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 inter-extra-bold text-base my-[1.5625em]">
+                <div
+                    class="p-6 rounded-2xl bg-whiteColor flex justify-center items-center text-center text-modalGreenText">
+                    $10/month Basic</div>
+                <div
+                    class="p-6 rounded-2xl bg-whiteColor flex justify-center items-center text-center text-modalOrangeText">
+                    $50/month Pro</div>
+                <div
+                    class="p-6 rounded-2xl bg-whiteColor flex justify-center items-center text-center text-arrowColor">
+                    Contact us Enterprise</div>
+            </div>
+            <div class="flex flex-col md:flex-row text-textColor mb-10 gap-8">
+                <div>
+                    <h2 class="work-sans-semi-bold text-blackColor text-[1.5625em] mb-4">Features</h2>
+                    <ul class="text-base work-sans-regular space-y-1 list-disc pl-7">
+                        <li>Customizable responses</li>
+                        <li>Multilingual support</li>
+                        <li>Seamless integration</li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="work-sans-semi-bold text-blackColor text-[1.5625em] mb-4">Integrations
+                    </h2>
+                    <ul class="text-base work-sans-regular space-y-1 list-disc pl-7">
+                        <li>FB Messenger</li>
+                        <li>Slack</li>
+                        <li>Telegram</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-[1.5625em] border border-modalRDivColor rounded-2xl relative">
+            <div class="">
+                <figure class="text-center flex justify-center">
+                    <img src="images/modal_chatgpt_picture.png" alt="Chatgpt picture."
+                        title="Chatgpt image." class="rounded-xl" />
+                </figure>
+            </div>
+            <div class="card-body items-center text-center pb-0 mx-auto">
+                <h2 class="card-title mb-4 work-sans-semi-bold text-[1.5625em] text-blackColor">Hi, how
+                    are you doing today?</h2>
+                <p class="text-textColor text-base inter-regular">I'm doing well, thank you for asking.
+                    How can I assist you today?</p>
+            </div>
+
+            <span
+                class="px-[0.9375em] pt-[0.3125em] pb-2 bg-buttonBg text-whiteColor text-base work-sans-semi-bold rounded-lg absolute top-[2.3125em] right-[2em]">94%
+                accuracy</span>
+        </div>
+
+    </div>
+
+    <!-- Modal Button div. -->
+    <div
+        class="bg-buttonBg  inline-block z-20 absolute right-0 top-0 translate-x-2/4 -translate-y-2/4 rounded-full">
+        <form method="dialog">
+            <!-- if there is a button in form, it will close the modal -->
+            <button
+                class="btn border-buttonBg bg-transparent flex-nowrap h-[.5em] md:h-[2em] lg:h-[3.25em] w-[.5em] md:w-[2em] lg:w-[3.25em] rounded-full">
+                <span class="text-base lg:text-xl text-whiteColor">
+                    <i class="fa-solid fa-xmark"></i>
+                </span>
+            </button>
+        </form>
+    </div>
+    `;
+
+    ai_modal_details.showModal();
 }
 
 
