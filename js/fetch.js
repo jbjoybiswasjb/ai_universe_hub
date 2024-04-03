@@ -85,6 +85,8 @@ const openAiModal = async (id) => {
     const modalData = await res.json();
     const aiDetails = modalData.data;
 
+    console.log(aiDetails)
+
     // Show open ai modal.
     const aiModalContainer = document.getElementById('ai_modal_container');
     aiModalContainer.innerHTML = `
@@ -92,36 +94,40 @@ const openAiModal = async (id) => {
     <div class="grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-5 p-1">
 
         <div class="border border-buttonBg p-4 lg:p-[1.875em] rounded-2xl bg-arrowColor/10">
-            <h2 class="text-[1.5625em] work-sans-semi-bold">ChatGPT is an AI-powered chatbot platform
-                that uses OpenAI's GPT technology to simulate human conversation.</h2>
+            <h2 class="text-[1.5625em] work-sans-semi-bold">
+                ${aiDetails?.description}
+            </h2>
             <div
                 class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 inter-extra-bold text-base my-[1.5625em]">
                 <div
                     class="p-6 rounded-2xl bg-whiteColor flex justify-center items-center text-center text-modalGreenText">
-                    $10/month Basic</div>
+                        ${aiDetails?.pricing[0]?.price} ${aiDetails?.pricing[0]?.plan}
+                    </div>
                 <div
                     class="p-6 rounded-2xl bg-whiteColor flex justify-center items-center text-center text-modalOrangeText">
-                    $50/month Pro</div>
+                        ${aiDetails?.pricing[0]?.price} ${aiDetails?.pricing[0]?.plan}
+                    </div>
                 <div
                     class="p-6 rounded-2xl bg-whiteColor flex justify-center items-center text-center text-arrowColor">
-                    Contact us Enterprise</div>
+                        ${aiDetails?.pricing[0]?.price} ${aiDetails?.pricing[0]?.plan}
+                    </div>
             </div>
             <div class="flex flex-col md:flex-row text-textColor mb-10 gap-8">
                 <div>
                     <h2 class="work-sans-semi-bold text-blackColor text-[1.5625em] mb-4">Features</h2>
                     <ul class="text-base work-sans-regular space-y-1 list-disc pl-7">
-                        <li>Customizable responses</li>
-                        <li>Multilingual support</li>
-                        <li>Seamless integration</li>
+                        <li>${aiDetails?.features[1]?.feature_name}</li>
+                        <li>${aiDetails?.features[2]?.feature_name}</li>
+                        <li>${aiDetails?.features[3]?.feature_name}</li>
                     </ul>
                 </div>
                 <div>
                     <h2 class="work-sans-semi-bold text-blackColor text-[1.5625em] mb-4">Integrations
                     </h2>
                     <ul class="text-base work-sans-regular space-y-1 list-disc pl-7">
-                        <li>FB Messenger</li>
-                        <li>Slack</li>
-                        <li>Telegram</li>
+                        <li>${aiDetails?.integrations[0]}</li>
+                        <li>${aiDetails?.integrations[1]}</li>
+                        <li>${aiDetails?.integrations[2]}</li>
                     </ul>
                 </div>
             </div>
@@ -130,19 +136,20 @@ const openAiModal = async (id) => {
         <div class="p-[1.5625em] border border-modalRDivColor rounded-2xl relative">
             <div class="">
                 <figure class="text-center flex justify-center">
-                    <img src="images/modal_chatgpt_picture.png" alt="Chatgpt picture."
-                        title="Chatgpt image." class="rounded-xl" />
+                    <img src="${aiDetails?.image_link[0]}" alt="Chatgpt picture." class="rounded-xl" />
                 </figure>
             </div>
             <div class="card-body items-center text-center pb-0 mx-auto">
-                <h2 class="card-title mb-4 work-sans-semi-bold text-[1.5625em] text-blackColor">Hi, how
-                    are you doing today?</h2>
+                <h2 class="card-title mb-4 work-sans-semi-bold text-[1.5625em] text-blackColor">
+                    ${aiDetails?.input_output_examples[0]?.input}
+                </h2>
                 <p class="text-textColor text-base inter-regular">I'm doing well, thank you for asking.
-                    How can I assist you today?</p>
+                    ${aiDetails?.input_output_examples[1]?.input}
+                </p>
             </div>
 
             <span
-                class="px-[0.9375em] pt-[0.3125em] pb-2 bg-buttonBg text-whiteColor text-base work-sans-semi-bold rounded-lg absolute top-[2.3125em] right-[2em]">94%
+                class="px-[0.9375em] pt-[0.3125em] pb-2 bg-buttonBg text-whiteColor text-base work-sans-semi-bold rounded-lg absolute top-[2.3125em] right-[2em]">${aiDetails?.accuracy?.score}%
                 accuracy</span>
         </div>
 
