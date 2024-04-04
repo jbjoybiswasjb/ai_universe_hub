@@ -86,8 +86,6 @@ const openAiModal = async (id) => {
     const modalData = await res.json();
     const aiDetails = modalData.data;
 
-    console.log(aiDetails)
-
     // Show open ai modal.
     const aiModalContainer = document.getElementById('ai_modal_container');
     aiModalContainer.innerHTML = `
