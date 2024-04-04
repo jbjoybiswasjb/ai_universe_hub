@@ -40,7 +40,7 @@ const showData = (apiData) => {
     apiDiv.innerHTML = `
     <div class="card bg-base-100 p-[1.5625em] border border-blackColor/10">
         <figure class="rounded-2xl">
-            <img src="${apiData?.image}" />
+            <img src="${apiData?.image ? apiData?.image : 'No image found.'}" />
         </figure>
         <div class="card-body p-0">
             <h2 class="card-title work-sans-semi-bold mt-[1.5625em] mb-4 text-blackColor">Features</h2>
@@ -48,6 +48,7 @@ const showData = (apiData) => {
                 <li>${apiData?.features[0]}</li>
                 <li>${apiData?.features[1]}</li>
                 <li>${apiData?.features[2]}</li>
+                <li>${apiData?.features[3] ? apiData?.features[3] : 'No data found.'}</li>
             </ol>
             <hr class="border border-blackColor/20 my-6">
             <div class="card-actions justify-between items-center">
@@ -101,15 +102,15 @@ const openAiModal = async (id) => {
                 class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 inter-extra-bold text-base my-[1.5625em]">
                 <div
                     class="p-6 rounded-2xl bg-whiteColor flex justify-center items-center text-center text-modalGreenText">
-                        ${aiDetails?.pricing[0]?.price} ${aiDetails?.pricing[0]?.plan}
+                        ${aiDetails?.pricing[0]?.price ? aiDetails?.pricing[0]?.price : 'No data found.'} ${aiDetails?.pricing[0]?.plan ? aiDetails?.pricing[0]?.plan : 'No data found.'}
                     </div>
                 <div
                     class="p-6 rounded-2xl bg-whiteColor flex justify-center items-center text-center text-modalOrangeText">
-                        ${aiDetails?.pricing[0]?.price} ${aiDetails?.pricing[0]?.plan}
+                        ${aiDetails?.pricing[0]?.price ? aiDetails?.pricing[0]?.price : 'No data found.'} ${aiDetails?.pricing[0]?.plan ? aiDetails?.pricing[0]?.plan : 'No data found.'}
                     </div>
                 <div
                     class="p-6 rounded-2xl bg-whiteColor flex justify-center items-center text-center text-arrowColor">
-                        ${aiDetails?.pricing[0]?.price} ${aiDetails?.pricing[0]?.plan}
+                        ${aiDetails?.pricing[0]?.price ? aiDetails?.pricing[0]?.price : 'No data found.'} ${aiDetails?.pricing[0]?.plan ? aiDetails?.pricing[0]?.plan : 'No data found.'}
                     </div>
             </div>
             <div class="flex flex-col md:flex-row text-textColor mb-10 gap-8">
@@ -125,9 +126,9 @@ const openAiModal = async (id) => {
                     <h2 class="work-sans-semi-bold text-blackColor text-[1.5625em] mb-4">Integrations
                     </h2>
                     <ul class="text-base work-sans-regular space-y-1 list-disc pl-7">
-                        <li>${aiDetails?.integrations[0]}</li>
-                        <li>${aiDetails?.integrations[1]}</li>
-                        <li>${aiDetails?.integrations[2]}</li>
+                        <li>${aiDetails?.integrations[0] ? aiDetails?.integrations[0] : 'No data found.'}</li>
+                        <li>${aiDetails?.integrations[1] ? aiDetails?.integrations[1] : 'No data found.'}</li>
+                        <li>${aiDetails?.integrations[2] ? aiDetails?.integrations[2] : 'No data found.'}</li>
                     </ul>
                 </div>
             </div>
@@ -136,15 +137,15 @@ const openAiModal = async (id) => {
         <div class="p-[1.5625em] border border-modalRDivColor rounded-2xl relative">
             <div class="">
                 <figure class="text-center flex justify-center">
-                    <img src="${aiDetails?.image_link[0]}" alt="Chatgpt picture." class="rounded-xl" />
+                    <img src="${aiDetails?.image_link[0]}" class="rounded-xl" />
                 </figure>
             </div>
             <div class="card-body items-center text-center pb-0 mx-auto">
                 <h2 class="card-title mb-4 work-sans-semi-bold text-[1.5625em] text-blackColor">
-                    ${aiDetails?.input_output_examples[0]?.input}
+                    ${aiDetails?.input_output_examples[0]?.input ? aiDetails?.input_output_examples[0]?.input : 'Data not found.'}
                 </h2>
                 <p class="text-textColor text-base inter-regular">I'm doing well, thank you for asking.
-                    ${aiDetails?.input_output_examples[1]?.input}
+                    ${aiDetails?.input_output_examples[1]?.input ? aiDetails?.input_output_examples[1]?.input : 'No! Not yet! Take a break!!!'}
                 </p>
             </div>
 
