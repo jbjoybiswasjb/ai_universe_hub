@@ -1,8 +1,17 @@
 // At first get data from api.
 const loadAiData = async (isSeeMoreButton) => {
+
+    // Show loading spinner.
+    const loadingSpinner = document.getElementById('loading_spinner_div');
+    loadingSpinner.classList.remove('hidden');
+
     const res = await fetch('https://openapi.programming-hero.com/api/ai/tools');
     const data = await res.json();
     let allApiData = data.data.tools;
+
+    if(allApiData.length > 0) {
+        loadingSpinner.classList.add('hidden');
+    }
 
     const seeMoreButton = document.getElementById('see_more_button');
     // Hide see more button.
@@ -16,9 +25,6 @@ const loadAiData = async (isSeeMoreButton) => {
     // Limit 6 ai data on UI.
     if (!isSeeMoreButton) {
         allApiData = allApiData.slice(0, 6);
-    }
-    else {
-        allApiData = allApiData.slice(6);
     }
 
     apiData(allApiData);
@@ -76,6 +82,11 @@ const showData = (apiData) => {
 
 // For show all button.
 const seeMoreButton = () => {
+
+    // Empty the api section if pressed the see more button.
+    const apiSection = document.getElementById('api_section');
+    apiSection.textContent = '';
+
     loadAiData(true);
 }
 
@@ -86,6 +97,7 @@ const openAiModal = async (id) => {
     const modalData = await res.json();
     const aiDetails = modalData.data;
 
+    
     // Show open ai modal.
     const aiModalContainer = document.getElementById('ai_modal_container');
     aiModalContainer.innerHTML = `
@@ -173,4 +185,4 @@ const openAiModal = async (id) => {
 }
 
 
-loadAiData();
+loadAiData('');
