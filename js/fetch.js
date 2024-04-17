@@ -9,6 +9,7 @@ const loadAiData = async (isSeeMoreButton) => {
     const data = await res.json();
     let allApiData = data.data.tools;
 
+    // Show the loading spinner.
     if(allApiData.length > 0) {
         loadingSpinner.classList.add('hidden');
     }
@@ -27,6 +28,10 @@ const loadAiData = async (isSeeMoreButton) => {
         allApiData = allApiData.slice(0, 6);
     }
 
+    else {
+        allApiData = allApiData.slice(6);
+    }
+
     apiData(allApiData);
 };
 
@@ -35,6 +40,11 @@ const apiData = (allApiData) => {
     allApiData.forEach(apiData => {
 
         showData(apiData);
+
+        // const features = apiData.features;
+        // for (const feature of features) {
+        //     return feature;
+        // }
     });
 }
 
@@ -82,11 +92,6 @@ const showData = (apiData) => {
 
 // For show all button.
 const seeMoreButton = () => {
-
-    // Empty the api section if pressed the see more button.
-    const apiSection = document.getElementById('api_section');
-    apiSection.textContent = '';
-
     loadAiData(true);
 }
 
@@ -96,7 +101,6 @@ const openAiModal = async (id) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/ai/tool/${id}`);
     const modalData = await res.json();
     const aiDetails = modalData.data;
-
     
     // Show open ai modal.
     const aiModalContainer = document.getElementById('ai_modal_container');
@@ -112,15 +116,15 @@ const openAiModal = async (id) => {
                 class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 inter-extra-bold text-base my-[1.5625em]">
                 <div
                     class="p-6 rounded-2xl bg-whiteColor flex justify-center items-center text-center text-modalGreenText">
-                        ${aiDetails?.pricing[0]?.price ? aiDetails?.pricing[0]?.price : 'No data found.'} ${aiDetails?.pricing[0]?.plan ? aiDetails?.pricing[0]?.plan : 'No data found.'}
+                        ${aiDetails?.pricing ? aiDetails?.pricing[0]?.price : aiDetails?.pricing} ${aiDetails?.pricing ? aiDetails?.pricing[0]?.plan : aiDetails?.pricing}
                     </div>
                 <div
                     class="p-6 rounded-2xl bg-whiteColor flex justify-center items-center text-center text-modalOrangeText">
-                        ${aiDetails?.pricing[0]?.price ? aiDetails?.pricing[0]?.price : 'No data found.'} ${aiDetails?.pricing[0]?.plan ? aiDetails?.pricing[0]?.plan : 'No data found.'}
+                        ${aiDetails?.pricing ? aiDetails?.pricing[1]?.price : aiDetails?.pricing} ${aiDetails?.pricing ? aiDetails?.pricing[1]?.plan : aiDetails?.pricing}
                     </div>
                 <div
                     class="p-6 rounded-2xl bg-whiteColor flex justify-center items-center text-center text-arrowColor">
-                        ${aiDetails?.pricing[0]?.price ? aiDetails?.pricing[0]?.price : 'No data found.'} ${aiDetails?.pricing[0]?.plan ? aiDetails?.pricing[0]?.plan : 'No data found.'}
+                        ${aiDetails?.pricing ? aiDetails?.pricing[2]?.price : aiDetails?.pricing} ${aiDetails?.pricing ? aiDetails?.pricing[2]?.plan : aiDetails?.pricing}
                     </div>
             </div>
             <div class="flex flex-col md:flex-row text-textColor mb-10 gap-8">
@@ -136,9 +140,9 @@ const openAiModal = async (id) => {
                     <h2 class="work-sans-semi-bold text-blackColor text-[1.5625em] mb-4">Integrations
                     </h2>
                     <ul class="text-base work-sans-regular space-y-1 list-disc pl-7">
-                        <li>${aiDetails?.integrations[0] ? aiDetails?.integrations[0] : 'No data found.'}</li>
-                        <li>${aiDetails?.integrations[1] ? aiDetails?.integrations[1] : 'No data found.'}</li>
-                        <li>${aiDetails?.integrations[2] ? aiDetails?.integrations[2] : 'No data found.'}</li>
+                        <li>${aiDetails?.integrations ? aiDetails?.integrations[0] : 'No data found.'}</li>
+                        <li>${aiDetails?.integrations ? aiDetails?.integrations[1] : 'No data found.'}</li>
+                        <li>${aiDetails?.integrations ? aiDetails?.integrations[2] : 'No data found.'}</li>
                     </ul>
                 </div>
             </div>
@@ -152,10 +156,10 @@ const openAiModal = async (id) => {
             </div>
             <div class="card-body items-center text-center pb-0 mx-auto">
                 <h2 class="card-title mb-4 work-sans-semi-bold text-[1.5625em] text-blackColor">
-                    ${aiDetails?.input_output_examples[0]?.input ? aiDetails?.input_output_examples[0]?.input : 'Data not found.'}
+                    ${aiDetails?.input_output_examples ? aiDetails?.input_output_examples[0]?.input : 'Data not found.'}
                 </h2>
-                <p class="text-textColor text-base inter-regular">I'm doing well, thank you for asking.
-                    ${aiDetails?.input_output_examples[1]?.input ? aiDetails?.input_output_examples[1]?.input : 'No! Not yet! Take a break!!!'}
+                <p class="text-textColor text-base inter-regular">
+                    ${aiDetails?.input_output_examples ? aiDetails?.input_output_examples[0]?.output : 'No! Not yet! Take a break!!!'}
                 </p>
             </div>
 
@@ -168,11 +172,11 @@ const openAiModal = async (id) => {
 
     <!-- Modal Button div. -->
     <div
-        class="bg-buttonBg  inline-block z-20 absolute right-0 top-0 translate-x-2/4 -translate-y-2/4 rounded-full">
+        class="inline-block z-20 absolute right-0 top-0 translate-x-2/4 -translate-y-2/4 rounded-full">
         <form method="dialog">
             <!-- if there is a button in form, it will close the modal -->
             <button
-                class="btn border-buttonBg bg-transparent flex-nowrap h-[.5em] md:h-[2em] lg:h-[3.25em] w-[.5em] md:w-[2em] lg:w-[3.25em] rounded-full">
+                class="btn bg-buttonBg flex-nowrap h-[.5em] md:h-[2em] lg:h-[3.25em] w-[.5em] md:w-[2em] lg:w-[3.25em] rounded-full">
                 <span class="text-base lg:text-xl text-whiteColor">
                     <i class="fa-solid fa-xmark"></i>
                 </span>
