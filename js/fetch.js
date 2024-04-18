@@ -10,7 +10,7 @@ const loadAiData = async (isSeeMoreButton) => {
     let allApiData = data.data.tools;
 
     // Show the loading spinner.
-    if(allApiData.length > 0) {
+    if (allApiData.length > 0) {
         loadingSpinner.classList.add('hidden');
     }
 
@@ -101,7 +101,8 @@ const openAiModal = async (id) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/ai/tool/${id}`);
     const modalData = await res.json();
     const aiDetails = modalData.data;
-    
+    console.log(aiDetails);
+
     // Show open ai modal.
     const aiModalContainer = document.getElementById('ai_modal_container');
     aiModalContainer.innerHTML = `
@@ -163,9 +164,7 @@ const openAiModal = async (id) => {
                 </p>
             </div>
 
-            <span
-                class="px-[0.9375em] pt-[0.3125em] pb-2 bg-buttonBg text-whiteColor text-base work-sans-semi-bold rounded-lg absolute top-[2.3125em] right-[2em]">${aiDetails?.accuracy?.score}%
-                accuracy</span>
+            ${aiDetails?.accuracy?.score ? `<span class="px-[0.9375em] pt-[0.3125em] pb-2 bg-buttonBg text-whiteColor text-base work-sans-semi-bold rounded-lg absolute top-[2.3125em] right-[2em]"> ${aiDetails?.accuracy?.score} % accuracy </span>` : ``}
         </div>
 
     </div>
