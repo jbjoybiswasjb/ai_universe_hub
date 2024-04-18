@@ -56,7 +56,7 @@ const showData = (apiData) => {
     apiDiv.innerHTML = `
     <div class="card bg-base-100 p-[1.5625em] border border-blackColor/10">
         <figure class="rounded-2xl">
-            <img src="${apiData?.image ? apiData?.image : 'No image found.'}" />
+            <img src="${apiData?.image ? apiData?.image : 'No image found.'}" alt="Image not found."/>
         </figure>
         <div class="card-body p-0">
             <h2 class="card-title work-sans-semi-bold mt-[1.5625em] mb-4 text-blackColor">Features</h2>
@@ -152,7 +152,7 @@ const openAiModal = async (id) => {
         <div class="p-[1.5625em] border border-modalRDivColor rounded-2xl relative">
             <div class="">
                 <figure class="text-center flex justify-center">
-                    <img src="${aiDetails?.image_link[0]}" class="rounded-xl" />
+                    <img src="${aiDetails?.image_link[0]}" class="rounded-xl" alt="Image not found."/>
                 </figure>
             </div>
             <div class="card-body items-center text-center pb-0 mx-auto">
