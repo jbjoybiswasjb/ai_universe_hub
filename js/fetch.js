@@ -56,7 +56,7 @@ const showData = (apiData) => {
     apiDiv.innerHTML = `
     <div class="card bg-base-100 p-[1.5625em] border border-blackColor/10">
         <figure class="rounded-2xl">
-            <img src="${apiData?.image ? apiData?.image : 'No image found.'}" alt="Image not found."/>
+            <img src="${apiData?.image ? apiData?.image : 'No image found.'}" alt="Image not found." title="${apiData?.name} image"/>
         </figure>
         <div class="card-body p-0">
             <h2 class="card-title work-sans-semi-bold mt-[1.5625em] mb-4 text-blackColor">Features</h2>
@@ -141,9 +141,9 @@ const openAiModal = async (id) => {
                     <h2 class="work-sans-semi-bold text-blackColor text-[1.5625em] mb-4">Integrations
                     </h2>
                     <ul class="text-base work-sans-regular space-y-1 list-disc pl-7">
-                        <li>${aiDetails?.integrations ? aiDetails?.integrations[0] : 'No data found.'}</li>
-                        <li>${aiDetails?.integrations ? aiDetails?.integrations[1] : 'No data found.'}</li>
-                        <li>${aiDetails?.integrations ? aiDetails?.integrations[2] : 'No data found.'}</li>
+                        <li>${aiDetails?.integrations[0] ? aiDetails?.integrations[0] : 'No data found.'}</li>
+                        <li>${aiDetails?.integrations[1] ? aiDetails?.integrations[1] : 'No data found.'}</li>
+                        <li>${aiDetails?.integrations[2] ? aiDetails?.integrations[2] : 'No data found.'}</li>
                     </ul>
                 </div>
             </div>
@@ -152,7 +152,7 @@ const openAiModal = async (id) => {
         <div class="p-[1.5625em] border border-modalRDivColor rounded-2xl relative">
             <div class="">
                 <figure class="text-center flex justify-center">
-                    <img src="${aiDetails?.image_link[0]}" class="rounded-xl" alt="Image not found."/>
+                    <img src="${aiDetails?.image_link[0]}" class="rounded-xl" alt="Image not found." title="image"/>
                 </figure>
             </div>
             <div class="card-body items-center text-center pb-0 mx-auto">
