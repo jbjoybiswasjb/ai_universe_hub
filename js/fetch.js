@@ -40,13 +40,12 @@ const apiData = (allApiData) => {
     allApiData.forEach(apiData => {
 
         showData(apiData);
-
-        // const features = apiData.features;
-        // for (const feature of features) {
-        //     return feature;
-        // }
     });
 }
+
+
+
+
 
 // Show all data on UI.
 const showData = (apiData) => {
@@ -96,12 +95,14 @@ const seeMoreButton = () => {
 }
 
 
+
 // Get modal data for open ai modal.
 const openAiModal = async (id) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/ai/tool/${id}`);
     const modalData = await res.json();
     const aiDetails = modalData.data;
-    console.log(aiDetails);
+
+    const integrationsArray = aiDetails?.integrations;
 
     // Show open ai modal.
     const aiModalContainer = document.getElementById('ai_modal_container');
