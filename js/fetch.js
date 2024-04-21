@@ -1,6 +1,6 @@
 // At first get data from api.
 const loadAiData = async (isSeeMoreButton) => {
-
+    
     // Show loading spinner.
     const loadingSpinner = document.getElementById('loading_spinner_div');
     loadingSpinner.classList.remove('hidden');
@@ -23,6 +23,7 @@ const loadAiData = async (isSeeMoreButton) => {
         seeMoreButton.classList.add('hidden');
     }
 
+   
     // Limit 6 ai data on UI.
     if (!isSeeMoreButton) {
         allApiData = allApiData.slice(0, 6);
@@ -103,6 +104,14 @@ const openAiModal = async (id) => {
     const aiDetails = modalData.data;
 
     const integrationsArray = aiDetails?.integrations;
+    console.log(integrationsArray);
+
+    const integrationsArrayIteration = () => {
+        for (const integrations of integrationsArray) {
+            console.log(integrations);
+        }
+    }
+    integrationsArrayIteration();
 
     // Show open ai modal.
     const aiModalContainer = document.getElementById('ai_modal_container');
@@ -133,18 +142,14 @@ const openAiModal = async (id) => {
                 <div>
                     <h2 class="work-sans-semi-bold text-blackColor text-[1.5625em] mb-4">Features</h2>
                     <ul class="text-base work-sans-regular space-y-1 list-disc pl-7">
-                        <li>${aiDetails?.features[1]?.feature_name}</li>
-                        <li>${aiDetails?.features[2]?.feature_name}</li>
-                        <li>${aiDetails?.features[3]?.feature_name}</li>
+                        
                     </ul>
                 </div>
                 <div>
                     <h2 class="work-sans-semi-bold text-blackColor text-[1.5625em] mb-4">Integrations
                     </h2>
                     <ul class="text-base work-sans-regular space-y-1 list-disc pl-7">
-                        <li>${aiDetails?.integrations ? aiDetails?.integrations[0] ? aiDetails?.integrations[0] : 'No data found.' : 'No data found.'}</li>
-                        <li>${aiDetails?.integrations ? aiDetails?.integrations[1] ? aiDetails?.integrations[1] : 'No data found.' : 'No data found.'}</li>
-                        <li>${aiDetails?.integrations ? aiDetails?.integrations[2] ? aiDetails?.integrations[2] : 'No data found.' : 'No data found.'}</li>
+                        ${ aiDetails?.integrations ? aiDetails?.integrations.map(item => `<li>${item ? item : 'No data found'}</li>`).join('') : 'No data found' }
                     </ul>
                 </div>
             </div>
