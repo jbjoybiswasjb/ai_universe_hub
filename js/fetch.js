@@ -1,6 +1,6 @@
 // At first get data from api.
 const loadAiData = async (isSeeMoreButton) => {
-    
+
     // Show loading spinner.
     const loadingSpinner = document.getElementById('loading_spinner_div');
     loadingSpinner.classList.remove('hidden');
@@ -23,7 +23,7 @@ const loadAiData = async (isSeeMoreButton) => {
         seeMoreButton.classList.add('hidden');
     }
 
-   
+
     // Limit 6 ai data on UI.
     if (!isSeeMoreButton) {
         allApiData = allApiData.slice(0, 6);
@@ -61,10 +61,7 @@ const showData = (apiData) => {
         <div class="card-body p-0">
             <h2 class="card-title work-sans-semi-bold mt-[1.5625em] mb-4 text-blackColor">Features</h2>
             <ol class="text-base text-textColor work-sans-regular list-decimal pl-[1.5625em]">
-                <li>${apiData?.features[0]}</li>
-                <li>${apiData?.features[1]}</li>
-                <li>${apiData?.features[2]}</li>
-                <li>${apiData?.features[3] ? apiData?.features[3] : 'No data found.'}</li>
+                ${apiData.features ? apiData.features.map(feature => `<li>${feature}</li>`).join('') : 'No data found.'}
             </ol>
             <hr class="border border-blackColor/20 my-6">
             <div class="card-actions justify-between items-center">
@@ -103,16 +100,6 @@ const openAiModal = async (id) => {
     const modalData = await res.json();
     const aiDetails = modalData.data;
 
-    const integrationsArray = aiDetails?.integrations;
-    console.log(integrationsArray);
-
-    const integrationsArrayIteration = () => {
-        for (const integrations of integrationsArray) {
-            console.log(integrations);
-        }
-    }
-    integrationsArrayIteration();
-
     // Show open ai modal.
     const aiModalContainer = document.getElementById('ai_modal_container');
     aiModalContainer.innerHTML = `
@@ -149,7 +136,7 @@ const openAiModal = async (id) => {
                     <h2 class="work-sans-semi-bold text-blackColor text-[1.5625em] mb-4">Integrations
                     </h2>
                     <ul class="text-base work-sans-regular space-y-1 list-disc pl-7">
-                        ${ aiDetails?.integrations ? aiDetails?.integrations.map(item => `<li>${item ? item : 'No data found'}</li>`).join('') : 'No data found' }
+                        ${aiDetails?.integrations ? aiDetails?.integrations.map(item => `<li>${item ? item : 'No data found'}</li>`).join('') : 'No data found'}
                     </ul>
                 </div>
             </div>
