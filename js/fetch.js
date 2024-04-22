@@ -112,12 +112,18 @@ const openAiModal = async (id) => {
             </h2>
             <div
                 class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 inter-extra-bold text-base my-[1.5625em]">
-                    ${aiDetails?.pricing ? aiDetails?.pricing.map(element => `
-                    <div class="p-6 rounded-2xl bg-whiteColor flex justify-center items-center text-center text-modalGreenText">
-                        ${element.price ? element.price : 'No price found.'}
-                        ${element.plan ? element.plan : 'No plan found.'}
+                <div
+                    class="p-6 rounded-2xl bg-whiteColor flex justify-center items-center text-center text-modalGreenText">
+                        ${aiDetails?.pricing ? aiDetails?.pricing[0]?.price : 'Pricing not found.'} ${aiDetails?.pricing ? aiDetails?.pricing[0]?.plan : 'Plan not found.'}
                     </div>
-                    `).join('') : 'No data found.'}
+                <div
+                    class="p-6 rounded-2xl bg-whiteColor flex justify-center items-center text-center text-modalOrangeText">
+                        ${aiDetails?.pricing ? aiDetails?.pricing[1]?.price : 'Pricing not found.'} ${aiDetails?.pricing ? aiDetails?.pricing[1]?.plan : 'Plan not found.'}
+                    </div>
+                <div
+                    class="p-6 rounded-2xl bg-whiteColor flex justify-center items-center text-center text-arrowColor">
+                        ${aiDetails?.pricing ? aiDetails?.pricing[2]?.price : 'Pricing not found.'} ${aiDetails?.pricing ? aiDetails?.pricing[2]?.plan : 'Plan not found.'}
+                    </div>
             </div>
             <div class="flex flex-col md:flex-row text-textColor mb-10 gap-8">
                 <div>
@@ -130,7 +136,7 @@ const openAiModal = async (id) => {
                     <h2 class="work-sans-semi-bold text-blackColor text-[1.5625em] mb-4">Integrations
                     </h2>
                     <ul class="text-base work-sans-regular space-y-1 list-disc pl-7">
-                        ${aiDetails?.integrations ? aiDetails?.integrations.map(item => `<li>${item}</li>`).join('') : 'No data found'}
+                        ${aiDetails?.integrations ? aiDetails?.integrations.map(item => `<li>${item ? item : 'No data found'}</li>`).join('') : 'No data found'}
                     </ul>
                 </div>
             </div>
