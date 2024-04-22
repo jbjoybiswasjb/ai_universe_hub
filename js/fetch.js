@@ -128,7 +128,7 @@ const openAiModal = async (id) => {
             <div class="flex flex-col md:flex-row text-textColor mb-10 gap-8">
                 <div>
                     <h2 class="work-sans-semi-bold text-blackColor text-[1.5625em] mb-4">Features</h2>
-                    <ul class="text-base work-sans-regular space-y-1 list-disc pl-7">
+                    <ul class="text-base work-sans-regular space-y-1 list-disc pl-7" id="features_list_and_description">
                         
                     </ul>
                 </div>
@@ -176,6 +176,19 @@ const openAiModal = async (id) => {
         </form>
     </div>
     `;
+
+
+    // Loop through an object like array in modal.
+    const featuresList = document.getElementById('features_list_and_description');
+    const features = aiDetails.features;
+    if (features) {
+        Object.keys(features).forEach(key => {
+            const feature = features[key];
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `${feature.feature_name}: ${feature.description}`;
+            featuresList.appendChild(listItem);
+        });
+    }
 
     ai_modal_details.showModal();
 }
